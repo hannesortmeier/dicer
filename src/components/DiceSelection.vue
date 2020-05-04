@@ -1,5 +1,5 @@
 <template>
-	<v-container class="fill-height grey lighten-5">
+	<v-container class="green lighten-5">
 		<v-row
 			align="center"
 			justify="center"
@@ -79,8 +79,8 @@ export default {
 				[
 				4, 6, 8, 10, 12, 20, 21, 23, 48
 				],
-			diceQuantity: null,
-			diceSideCount: null
+			diceQuantity: 3,
+			diceSideCount: 6
 		}
 	},
 

@@ -6,7 +6,15 @@
 				@add-dices="addDiceObjects($event[0], $event[1])"
 				@remove-all="removeAllDiceObjects()"
 			/>
-			<DiceField />
+			<DiceField 
+      v-if="this.diceObjects.length > 0" 
+      :dices="diceObjects"
+      :idToIndexLookupTable="idToIndexLookupTable"
+      :selectedDicesLookupTable="selectedDicesLookupTable"
+      @set-top="setTop($event[0], $event[1])"
+      @set-selected="setSelected($event)"
+      @remove-dice="removeSingleDiceObject($event)"
+      />
 		</v-content>
 		<Footer />
 	</v-app>
