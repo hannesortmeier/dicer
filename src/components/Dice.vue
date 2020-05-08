@@ -10,12 +10,7 @@
 					v-on="on"
 					@click.native="$emit('set-selected', dice.id)"
 				>
-					<img
-						:src="currentSVG"
-						height="63"
-						width="63"
-					>
-					</img>
+					<DiceIcon :name='currentSVG' />
 				</v-btn>
 			</template>
 			<span v-if="dice.selected">deselect</span>
@@ -26,18 +21,24 @@
 </template>
 
 <script>
-/* import d6t6black from '../assets/d6t6black.svg'
+
+import DiceIcon from './DiceIcon'
+/*
 import d6t5white from '../assets/d6t5white.svg'
 import d6t5black from '../assets/d6t5black.svg'
  */
 export default {
-  name: "Dice",
+	name: "Dice",
 
-  data() {
-    return{ 
-      diceSvgSrc: null
-    }
-  },
+	components: {
+		DiceIcon
+	}, 
+
+	data() {
+		return {
+			iconName: null
+		}
+	},
 
   props: {
     dice: Object,
@@ -56,8 +57,8 @@ export default {
 		currentSVG() {
       let sides = this.dice.sides
 			let top = this.dice.top
-			let svg = '../assets/d' + sides + 't' + top + 'black.svg'
-			return this.diceSvgSrc = svg
+			let svg = 'd' + sides + 't' + top + 'black'
+			return this.iconName = svg
 		}
 	}
 
