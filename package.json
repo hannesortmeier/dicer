@@ -7,11 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "eslint": "^6.8.0",
     "vue": "^2.6.11",
+    "vue-svg-transition": "^0.2.1",
     "vuetify": "^2.2.11"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.3.0",
+    "prettier": "2.0.5",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "vue-cli-plugin-vuetify": "~2.0.5",

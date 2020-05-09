@@ -1,90 +1,97 @@
 <template>
-  <div class="selector-component">
-    <h1>Select your dices!</h1>
-    <div class="selector">
-        <p>Dices:
-        <select 
-          v-model.number="diceQuantity" 
-          type="number">
-          <option 
-            v-for="quantityOfDices in supportedQuantityOfDices" 
-            :key="quantityOfDices">
-            {{ quantityOfDices }}
-          </option>
-        </select>
-        Sides:
-        <select 
-          v-model.number="diceSideCount" 
-          type="number">
-          <option 
-            v-for="countOfSides in supportedCountOfDiceSides" 
-            :key="countOfSides">
-            {{ countOfSides }}
-          </option>
-        </select>
-        <button @click='addDiceObjectsButtonClicked()' class="addDicesButton">add</button>
-        <button @click="$emit('remove-all')">remove all</button>
-        </p>
-    </div>
-  </div>
+	<v-container class="green lighten-5">
+		<v-row
+			align="center"
+			justify="center"
+		>
+
+			<v-col
+				class="d-flex justify-center"
+				cols="4"
+				sm="4"
+			>
+				<v-select
+					:items="supportedQuantityOfDices"
+					label="How many dices?"
+					v-model.number="diceQuantity"
+				></v-select>
+			</v-col>
+
+			<v-col
+				class="d-flex justify-center"
+				cols="4"
+				sm="4"
+			>
+				<v-select
+					:items="supportedQuantityOfSides"
+					label="How many sides?"
+					v-model.number="diceSideCount"
+				></v-select>
+			</v-col>
+			<v-col
+				class="d-flex justify-left"
+				cols="2"
+				sm="1"
+			>
+				<v-tooltip top>
+					<template v-slot:activator="{ on }">
+						<v-btn
+							icon
+							large
+							v-on="on"
+							@click.native="addDiceObjectsButtonClicked()"
+						>
+							<v-icon large>mdi-plus-box</v-icon>
+						</v-btn>
+					</template>
+					<span>Add</span>
+				</v-tooltip>
+
+				<v-tooltip top>
+					<template v-slot:activator="{ on }">
+						<v-btn
+							icon
+							large
+							v-on="on"
+							@click.native="$emit('remove-all')"
+						>
+							<v-icon large>mdi-close-box</v-icon>
+						</v-btn>
+					</template>
+					<span>Remove all</span>
+				</v-tooltip>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
 export default {
-  name: "DiceSelection",
+	name: 'DiceSelection',
 
-  data() {
-    return {
-      diceQuantity: 1,
-      diceSideCount: 6,
-      supportedQuantityOfDices: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
-      supportedCountOfDiceSides: [4,6,7,8,9,10,11,12,13,14,15,16,21,23,48],
-    }
-  },
+	data() {
+		return {
+			supportedQuantityOfDices: 
+				[
+				1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16
+				],
+			supportedQuantityOfSides: 
+				[
+				/*4,*/ 6/*, 8, 10, 12, 20, 21, 23, 48*/
+				],
+			diceQuantity: null,
+			diceSideCount: null
+		}
+	},
 
-  methods: {
-    addDiceObjectsButtonClicked() {
-      let args = [this.diceQuantity, this.diceSideCount]
-      this.$emit('add-dices', args)
-    }
-  }
-
-};
+	methods: {
+		addDiceObjectsButtonClicked() {
+			let args = [this.diceQuantity, this.diceSideCount]
+			this.$emit('add-dices', args)
+		}
+	}
+}
 </script>
 
-<style scoped>
-.selector-component {
-  font-size: 20px;
-}
-
-.addDicesButtonx {
-  font-size: 18px;
-   padding:5px; 
-  border:2px solid #ccc;     
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  width: 25px;
-}
-
-select[type=number] {
-    padding:5px; 
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    width: 50px;
-    height: 30px;
-}
-
-select[type=number]:focus {
-    border-color:#333;
-}
-
-select[type=submit] {
-    padding:5px 15px; 
-    background:#ccc; 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-}
+<style>
 </style>
