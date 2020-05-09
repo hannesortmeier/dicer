@@ -10,7 +10,7 @@
 			v-for="dice in dices"
 			:key="dice.id"
 		>
-			<Dice :dice="dice" />
+			<Dice :dice="dice" @set-selected="$emit('set-selected', dice.id)"/>
 		</v-col>
 	</v-row>
 </template>

@@ -77,10 +77,10 @@ export default {
 				],
 			supportedQuantityOfSides: 
 				[
-				4, 6, 8, 10, 12, 20, 21, 23, 48
+				/*4,*/ 6/*, 8, 10, 12, 20, 21, 23, 48*/
 				],
-			diceQuantity: 3,
-			diceSideCount: 6
+			diceQuantity: null,
+			diceSideCount: null
 		}
 	},
 

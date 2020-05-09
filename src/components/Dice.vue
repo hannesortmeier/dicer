@@ -5,18 +5,17 @@
 				<v-btn
 					icon
 					large
-					height="63"
-					width="63"
+					height="100"
+					width="100"
 					v-on="on"
-					@click.native="$emit('set-selected', dice.id)"
+					@click.native="$emit('set-selected')"
 				>
-					<DiceIcon :name='currentSVG' />
+					<DiceIcon :name='currentSVG' :selected="dice.selected" />
 				</v-btn>
 			</template>
 			<span v-if="dice.selected">deselect</span>
 			<span v-else>select</span>
 		</v-tooltip>
-		{{ dice.id }}, {{ dice.selected }}, {{ dice.top }}
 	</div>
 </template>
 
@@ -34,24 +33,9 @@ export default {
 		DiceIcon
 	}, 
 
-	data() {
-		return {
-			iconName: null
-		}
-	},
-
   props: {
     dice: Object,
   },
-
-  	methods: {
-		getBlackSVG(diceSides, diceTop) {
-			let sides = diceSides
-			let top = diceTop
-			let svg = '../assets/d' + sides + 't' + top + 'black.svg'
-			return svg
-		}
-	},
 	
 	computed: {
 		currentSVG() {
