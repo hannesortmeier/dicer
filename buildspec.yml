@@ -17,7 +17,6 @@ phases:
       - npm install
   build:
     runtime-versions:
-      nodejs: 12.x
     commands:
       - echo 'building...'
       - npm run build
