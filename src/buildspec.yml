@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    repository: "https://github.com/hannesortmeier/dicer"
+    repository: "https://github.com/hannesortmeier/dicer.git"
   parameter-store:
     email: "E-Mail"
 
