@@ -5,8 +5,8 @@
 	>
 		<v-col
 			class="d-flex justify-center"
-			cols="5"
-			sm="4"
+			cols="3"
+			
 			v-for="dice in dices"
 			:key="dice.id"
 		>

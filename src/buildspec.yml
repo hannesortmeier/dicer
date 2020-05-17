@@ -1,0 +1,28 @@
+version: 0.2
+
+env:
+  variables:
+    repository: "https://github.com/hannesortmeier/dicer"
+  parameter-store:
+    email: "E-Mail"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+    commands:
+      - echo 'updating...'
+      - npm update
+      - echo 'installing dependencies...'
+      - npm install
+  build:
+    runtime-versions:
+      nodejs: 12.x
+    commands:
+      - echo 'building...'
+      - npm run build
+artifacts:
+  files:
+    - '**/*'
+  name: dicer.pro-$(date +%Y-%m-%d)
+  base-directory: dist
