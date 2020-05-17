@@ -1,20 +1,28 @@
 <template>
 	<v-app id="inspire">
 		<AppBar @nav-button-clicked="setDrawer()" />
-		<v-content>
-			<DiceSelection
-				@add-dices="addDiceObjects($event[0], $event[1])"
-				@remove-all="removeAllDiceObjects()"
-			/>
-			<DiceField 
-      v-if="this.diceObjects.length > 0" 
-      :dices="diceObjects"
-      :idToIndexLookupTable="idToIndexLookupTable"
-      :selectedDicesLookupTable="selectedDicesLookupTable"
-      @set-top="setTop($event[0], $event[1])"
-      @set-selected="setSelected($event)"
-      @remove-dice="removeSingleDiceObject($event)"
-      />
+		<v-content class="ma-5">
+			<v-card
+				class="mx-auto ma-5"
+				min-width="380"
+				max-width="780"
+				min-height="480"
+				elevation="18"
+			>
+				<DiceSelection
+					@add-dices="addDiceObjects($event[0], $event[1])"
+					@remove-all="removeAllDiceObjects()"
+				/>
+				<DiceField
+					v-if="this.diceObjects.length > 0"
+					:dices="diceObjects"
+					:idToIndexLookupTable="idToIndexLookupTable"
+					:selectedDicesLookupTable="selectedDicesLookupTable"
+					@set-top="setTop($event[0], $event[1])"
+					@set-selected="setSelected($event)"
+					@remove-dice="removeSingleDiceObject($event)"
+				/>
+			</v-card>
 		</v-content>
 		<Footer />
 	</v-app>

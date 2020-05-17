@@ -1,5 +1,5 @@
 <template>
-	<v-container class="green lighten-5">
+	<v-container fluid class="lighten-5">
 		<v-row
 			align="center"
 			justify="center"
