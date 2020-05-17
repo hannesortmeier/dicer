@@ -16,7 +16,6 @@ phases:
       - echo 'installing dependencies...'
       - npm install
   build:
-    runtime-versions:
     commands:
       - echo 'building...'
       - npm run build
