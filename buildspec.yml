@@ -19,9 +19,9 @@ phases:
     commands:
       - echo 'building...'
       - npm run build
+      - gzip dist
       
 artifacts:
   files:
-    - '**/*'
-  name: dicer.pro-$(date +%Y-%m-%d)
-  base-directory: dist
+    - 'dist.zip'
+  name: dicer.pro-$(date +%Y-%m-%d).zip
