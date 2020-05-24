@@ -23,5 +23,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  name: dicer.pro-$(date +%Y-%m-%d).zip
+  name: dicer.pro-$(date +%Y-%m-%d)
   base-directory: dist
