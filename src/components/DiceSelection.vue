@@ -31,18 +31,18 @@
 			</v-col>
 			<v-col
 				class="d-flex justify-left"
-				cols="2"
+				cols="4"
 				sm="1"
 			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							medium
+							large
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
-							<v-icon medium>mdi-plus-box</v-icon>
+							<v-icon large>mdi-plus-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Add</span>
@@ -52,11 +52,11 @@
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							medium
+							large
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
-							<v-icon medium>mdi-close-box</v-icon>
+							<v-icon large>mdi-close-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Remove all</span>
