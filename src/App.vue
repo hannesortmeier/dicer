@@ -4,6 +4,7 @@
 		<v-content class="ma-5">
 			<v-card
 				class="mx-auto ma-5"
+				
 				max-width="780"
 				min-height="480"
 				elevation="18"

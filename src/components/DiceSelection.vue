@@ -9,7 +9,7 @@
 		>
 			<v-col
 				class="d-flex justify-center"
-				cols="3"
+				cols="4"
 				sm="4"
 			>
 				<v-select
@@ -20,7 +20,7 @@
 			</v-col>
 			<v-col
 				class="d-flex justify-center"
-				cols="3"
+				cols="4"
 				sm="4"
 			>
 				<v-select
@@ -31,8 +31,8 @@
 			</v-col>
 			<v-col
 				class="d-flex justify-left"
-				cols="3"
-				sm="4"
+				cols="2"
+				sm="1"
 			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
@@ -42,7 +42,7 @@
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
-							<v-icon medium>mdi-plus-box</v-icon>
+							<v-icon large>mdi-plus-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Add</span>
@@ -56,7 +56,7 @@
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
-							<v-icon medium>mdi-close-box</v-icon>
+							<v-icon large>mdi-close-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Remove all</span>
@@ -96,6 +96,6 @@ export default {
 
 <style>
 .v-label {
-	font-size: 7px;
+	font-size: 12px;
 }
 </style>
