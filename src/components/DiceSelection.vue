@@ -42,7 +42,7 @@
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
-							<v-icon large>mdi-plus-box</v-icon>
+							<v-icon medium>mdi-plus-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Add</span>
@@ -56,7 +56,7 @@
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
-							<v-icon large>mdi-close-box</v-icon>
+							<v-icon medium>mdi-close-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Remove all</span>
