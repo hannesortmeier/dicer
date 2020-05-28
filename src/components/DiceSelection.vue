@@ -1,13 +1,15 @@
 <template>
-	<v-container fluid class="lighten-5">
+	<v-container
+		fluid
+		class="lighten-5"
+	>
 		<v-row
 			align="center"
 			justify="center"
 		>
-
 			<v-col
 				class="d-flex justify-center"
-				cols="4"
+				cols="3"
 				sm="4"
 			>
 				<v-select
@@ -16,10 +18,9 @@
 					v-model.number="diceQuantity"
 				></v-select>
 			</v-col>
-
 			<v-col
 				class="d-flex justify-center"
-				cols="4"
+				cols="3"
 				sm="4"
 			>
 				<v-select
@@ -30,18 +31,18 @@
 			</v-col>
 			<v-col
 				class="d-flex justify-left"
-				cols="2"
-				sm="1"
+				cols="3"
+				sm="4"
 			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							large
+							medium
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
-							<v-icon large>mdi-plus-box</v-icon>
+							<v-icon medium>mdi-plus-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Add</span>
@@ -51,11 +52,11 @@
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							large
+							medium
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
-							<v-icon large>mdi-close-box</v-icon>
+							<v-icon medium>mdi-close-box</v-icon>
 						</v-btn>
 					</template>
 					<span>Remove all</span>
@@ -94,4 +95,7 @@ export default {
 </script>
 
 <style>
+.v-label {
+	font-size: 7px;
+}
 </style>
