@@ -10,29 +10,28 @@
 			<v-col
 				class="d-flex justify-center"
 				cols="4"
-				sm="4"
 			>
 				<v-select
 					:items="supportedQuantityOfDices"
 					label="How many dices?"
+					:class="{'sm-label': $vuetify.breakpoint.mdAndUp}"
 					v-model.number="diceQuantity"
 				></v-select>
 			</v-col>
 			<v-col
 				class="d-flex justify-center"
 				cols="4"
-				sm="4"
 			>
 				<v-select
 					:items="supportedQuantityOfSides"
 					label="How many sides?"
+					:class="{'sm-label': $vuetify.breakpoint.mdAndUp}"
 					v-model.number="diceSideCount"
 				></v-select>
 			</v-col>
 			<v-col
-				class="d-flex justify-left"
-				cols="4"
-				sm="1"
+				class="d-flex justify-center"
+				cols="2"
 			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
@@ -95,7 +94,7 @@ export default {
 </script>
 
 <style>
-.v-label {
-	font-size: 12px;
+.sm-label .v-label {
+	font-size: 10px !important
 }
 </style>
