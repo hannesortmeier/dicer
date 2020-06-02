@@ -1,5 +1,8 @@
 <template>
-	<v-app id="inspire">
+	<v-app
+		id="inspire"
+		:style="{background: $vuetify.theme.themes.light.background}"
+	>
 		<AppBar @nav-button-clicked="setDrawer()" />
 		<v-content class="ma-5">
 			<v-card
@@ -7,6 +10,7 @@
 				max-width="780"
 				min-height="480"
 				elevation="18"
+				color="#ebefe8"
 			>
 				<DiceSelection
 					@add-dices="addDiceObjects($event[0], $event[1])"
@@ -40,6 +44,10 @@ export default {
     DiceSelection,
     DiceField
 	},
+
+	mounted () {
+      console.log(this.$vuetify.breakpoint)
+    },
 
 	props: {},
 
