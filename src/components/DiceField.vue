@@ -1,6 +1,6 @@
 <template>
 	<v-container class="lighten-5">
-		<v-row>
+		<v-row dense>
 			<v-col cols="12">
 		<Dices
 			:dices="dices"

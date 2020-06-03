@@ -1,12 +1,12 @@
 <template>
 	<v-row
+		dense
 		align="center"
 		justify="center"
 	>
 		<v-col
 			class="d-flex justify-center"
 			cols="3"
-			
 			v-for="dice in dices"
 			:key="dice.id"
 		>

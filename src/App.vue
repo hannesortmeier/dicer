@@ -8,7 +8,7 @@
 			<v-card
 				class="mx-auto ma-5"
 				max-width="780"
-				min-height="480"
+				min-height="360"
 				elevation="18"
 				color="#ebefe8"
 			>

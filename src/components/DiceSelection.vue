@@ -3,7 +3,18 @@
 		fluid
 		class="lighten-5"
 	>
+	<div v-if="showDiceCountAlert" align="start" justify="center">
+			<v-alert type="info" color="#00b1ca" dense outlined>
+			You have to choose the number of dices you want to add!
+		</v-alert>
+	</div>
+		<div v-if="showDiceSideAlert" align="start" justify="center">
+			<v-alert type="info" color="#00b1ca" dense outlined>
+			You have to choose the number of sides of the dices you want to add!
+		</v-alert>
+	</div>
 		<v-row
+			dense
 			align="center"
 			justify="center"
 		>
@@ -14,7 +25,8 @@
 				<v-select
 					:items="supportedQuantityOfDices"
 					label="How many dices?"
-					:class="{'sm-label': $vuetify.breakpoint.mdAndUp}"
+					:class="{'sm-label': $vuetify.breakpoint.sm,
+									 'sm-label': $vuetify.breakpoint.xs}"
 					v-model.number="diceQuantity"
 				></v-select>
 			</v-col>
@@ -25,7 +37,8 @@
 				<v-select
 					:items="supportedQuantityOfSides"
 					label="How many sides?"
-					:class="{'sm-label': $vuetify.breakpoint.mdAndUp}"
+					:class="{'sm-label': $vuetify.breakpoint.sm,
+									 'sm-label': $vuetify.breakpoint.xs}"
 					v-model.number="diceSideCount"
 				></v-select>
 			</v-col>
@@ -37,7 +50,7 @@
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							large
+							medium
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
@@ -51,7 +64,7 @@
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							large
+							medium
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
@@ -71,23 +84,30 @@ export default {
 
 	data() {
 		return {
-			supportedQuantityOfDices: 
-				[
-				1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16
-				],
-			supportedQuantityOfSides: 
-				[
-				/*4,*/ 6/*, 8, 10, 12, 20, 21, 23, 48*/
-				],
+			supportedQuantityOfDices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12, 13, 14, 15, 16],
+			supportedQuantityOfSides: [/*4,*/ 6/*, 8, 10, 12, 20, 21, 23, 48*/],
 			diceQuantity: null,
-			diceSideCount: null
+			diceSideCount: null,
+			showDiceCountAlert: false,
+			showDiceSideAlert: false
 		}
 	},
 
 	methods: {
 		addDiceObjectsButtonClicked() {
-			let args = [this.diceQuantity, this.diceSideCount]
-			this.$emit('add-dices', args)
+			if (!this.diceQuantity) {
+				this.showDiceCountAlert = true
+			}
+			else if  (!this.diceSideCount) {
+				this.showDiceSideAlert = true
+				this.showDiceCountAlert = false
+			}
+			else {
+				this.showDiceCountAlert = false
+				this.showDiceSideAlert = false
+				let args = [this.diceQuantity, this.diceSideCount]
+				this.$emit('add-dices', args)
+			}
 		}
 	}
 }
