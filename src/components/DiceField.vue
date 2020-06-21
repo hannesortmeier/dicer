@@ -1,17 +1,17 @@
 <template>
-	<v-container class="lighten-5">
+	<v-container class='lighten-5 pt-0'>
 		<v-row dense>
 			<v-col cols="12">
-		<Dices
-			:dices="dices"
-			@set-selected="setSelected($event)"
-		/>
-		<LetsRollButton
-			:dices="dices"
-			:idToIndexLookupTable="idToIndexLookupTable"
-			:selectedDicesLookupTable="selectedDicesLookupTable"
-			@set-top="setTop($event)"
-		/>
+				<Dices
+					:dices="dices"
+					@set-selected="setSelected($event)"
+				/>
+				<LetsRollButton
+					:dices="dices"
+					:idToIndexLookupTable="idToIndexLookupTable"
+					:selectedDicesLookupTable="selectedDicesLookupTable"
+					@set-top="setTop($event)"
+				/>
 			</v-col>
 		</v-row>
 	</v-container>
