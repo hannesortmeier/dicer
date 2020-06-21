@@ -1,22 +1,38 @@
 <template>
 	<v-container
 		fluid
-		class="lighten-5"
+		:class="{'lighten-5': true,
+						 'pb-0': $vuetify.breakpoint.xs}"
 	>
-	<div v-if="showDiceCountAlert" align="start" justify="center">
-			<v-alert type="info" color="#00b1ca" dense outlined>
-			You have to choose the number of dices you want to add!
-		</v-alert>
-	</div>
-		<div v-if="showDiceSideAlert" align="start" justify="center">
-			<v-alert type="info" color="#00b1ca" dense outlined>
-			You have to choose the number of sides of the dices you want to add!
-		</v-alert>
-	</div>
+		<div
+			align="start"
+			justify="center"
+		>
+			<v-alert
+				:value="showDiceCountAlert"
+				type="info"
+				color="#00b1ca"
+				transition="scale-transition"
+				dense
+				outlined
+			>
+				You have to choose the number of dices you want to add!
+			</v-alert>
+			<v-alert
+				:value="showDiceSideAlert"
+				type="info"
+				color="#00b1ca"
+				transition="scale-transition"
+				dense
+				outlined
+			>
+				You have to choose the number of sides of the dices you want to add!
+			</v-alert>
+		</div>
 		<v-row
 			dense
 			align="center"
-			justify="center"
+			justify="space-around"
 		>
 			<v-col
 				class="d-flex justify-center"
@@ -26,7 +42,7 @@
 					:items="supportedQuantityOfDices"
 					label="How many dices?"
 					:class="{'sm-label': $vuetify.breakpoint.sm,
-									 'sm-label': $vuetify.breakpoint.xs}"
+									 'xs-label': $vuetify.breakpoint.xs}"
 					v-model.number="diceQuantity"
 				></v-select>
 			</v-col>
@@ -38,28 +54,38 @@
 					:items="supportedQuantityOfSides"
 					label="How many sides?"
 					:class="{'sm-label': $vuetify.breakpoint.sm,
-									 'sm-label': $vuetify.breakpoint.xs}"
+									 'xs-label': $vuetify.breakpoint.xs}"
 					v-model.number="diceSideCount"
 				></v-select>
 			</v-col>
 			<v-col
 				class="d-flex justify-center"
-				cols="2"
+				cols="1"
 			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
 							icon
-							medium
+							:size="{'small': $vuetify.breakpoint.xs,
+											'medium': $vuetify.breakpoint.sm,
+											'large': $vuetify.breakpoint.mdAndUp}"
 							v-on="on"
 							@click.native="addDiceObjectsButtonClicked()"
 						>
-							<v-icon large>mdi-plus-box</v-icon>
+							<v-icon :size="{'small': $vuetify.breakpoint.xs,
+															'medium': $vuetify.breakpoint.sm,
+															'large': $vuetify.breakpoint.mdAndUp}">
+								mdi-plus-box
+							</v-icon>
 						</v-btn>
 					</template>
 					<span>Add</span>
 				</v-tooltip>
-
+			</v-col>
+			<v-col
+				class="d-flex justify-center"
+				cols="1"
+			>
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
@@ -68,7 +94,9 @@
 							v-on="on"
 							@click.native="$emit('remove-all')"
 						>
-							<v-icon large>mdi-close-box</v-icon>
+							<v-icon large>
+								mdi-close-box
+							</v-icon>
 						</v-btn>
 					</template>
 					<span>Remove all</span>
@@ -94,13 +122,14 @@ export default {
 	},
 
 	methods: {
-		addDiceObjectsButtonClicked() {
+		async addDiceObjectsButtonClicked() {
 			if (!this.diceQuantity) {
 				this.showDiceCountAlert = true
 			}
 			else if  (!this.diceSideCount) {
-				this.showDiceSideAlert = true
 				this.showDiceCountAlert = false
+				await new Promise(r => setTimeout(r, 300))
+				this.showDiceSideAlert = true
 			}
 			else {
 				this.showDiceCountAlert = false
@@ -115,6 +144,14 @@ export default {
 
 <style>
 .sm-label .v-label {
-	font-size: 10px !important
+	font-size: 10px !important;
+}
+
+.xs-label .v-label {
+	font-size: 8px !important;
+}
+
+.xs-label {
+	width: 5px;
 }
 </style>
