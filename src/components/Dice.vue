@@ -22,10 +22,7 @@
 <script>
 
 import DiceIcon from './DiceIcon'
-/*
-import d6t5white from '../assets/d6t5white.svg'
-import d6t5black from '../assets/d6t5black.svg'
- */
+
 export default {
 	name: "Dice",
 
