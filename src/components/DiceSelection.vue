@@ -126,7 +126,10 @@ export default {
 				15,
 				16,
 			],
-			supportedQuantityOfSides: [/*4,*/ 6 /*, 8, 10, 12, 20, 21, 23, 48*/],
+			supportedQuantityOfSides: [
+				/*4,*/ 6,
+				/* 8, 10, 12, */ 20 /*, 21, 23, 48*/,
+			],
 			diceQuantity: null,
 			diceSideCount: null,
 			showDiceCountAlert: false,
