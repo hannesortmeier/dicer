@@ -1,35 +1,53 @@
 <template>
 	<svg
 		class="icon"
-    width="72px"
-    height="72px"
-    :opacity="opacity"
-    fill="#000000"
-    fill-opacity="1"
+		width="72px"
+		height="72px"
+		:opacity="opacity"
+		fill="#000000"
+		fill-opacity="1"
 		viewBox="0 0 24 24"
 	>
-		<path :d="path" />
+		<g
+			v-if="name.substr(0,3) == 'd20'"
+			:transform="paths[0]['transform']"
+		>
+			<path
+				v-for="(path, index) in paths"
+				:d="path['d']"
+				:stroke-width="path['stroke-width']"
+				:fill="path['fill']"
+				:key="index"
+			/>
+		</g>
+		<path
+			v-else
+			v-for="(path, index) in paths"
+			:d="path['d']"
+			:key="index"
+		/>
 	</svg>
 </template>
 
 <script>
-import icons from '../assets/diceIcons.json'
+import icons from "../assets/dicer_svg.json";
 export default {
-  name: 'DiceIcon',
+	name: "DiceIcon",
 
-  props: {
-    name: String,
-    selected: Boolean
-  },
+	props: {
+		name: String,
+		selected: Boolean,
+	},
 
-  computed: {
-    path() {
-      return icons[this.name];
-    },
+	computed: {
+		paths() {
+			console.log(this.name);
+			return icons[this.name];
+		},
 
-    opacity() {
-      return this.selected ? 0.75 : 0.25
-    }
-  },
-}
+		opacity() {
+			return this.selected ? 0.75 : 0.25;
+		},
+	},
+};
 </script>
