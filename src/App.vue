@@ -1,8 +1,5 @@
 <template>
-	<v-app
-		id="inspire"
-		:style="{background: $vuetify.theme.themes.light.background}"
-	>
+	<v-app id="inspire" :style="{background: $vuetify.theme.themes.light.background}">
 		<AppBar @nav-button-clicked="setDrawer()" />
 		<v-content class="ma-5">
 			<v-card
@@ -58,14 +55,9 @@ export default {
 	}),
 
 	methods: {
-    //add exception if one of the parameters equals null
 		addDiceObjects(diceQuantity, diceSideCount) {
 			let nextId = this.getNextIdOfDiceObject()
-			for (
-				let i = nextId;
-				i < parseFloat(diceQuantity) + parseFloat(nextId);
-				i++
-			) {
+			for (let i = nextId; i < parseFloat(diceQuantity) + parseFloat(nextId); i++) {
 				this.diceObjects.push({
 					id: i,
 					sides: diceSideCount,
@@ -95,11 +87,7 @@ export default {
 
 		setSelected(diceId) {
 			let arrayIndexToDiceId = this.idToIndexLookupTable[diceId]
-			this.diceObjects[arrayIndexToDiceId].selected = this.diceObjects[
-				arrayIndexToDiceId
-			].selected
-				? false
-				: true
+			this.diceObjects[arrayIndexToDiceId].selected = this.diceObjects[arrayIndexToDiceId].selected ? false : true
 			this.updateSelectedLookupTable()
 		},
 
@@ -133,11 +121,6 @@ export default {
 			}
 			this.selectedDicesLookupTable = selectedDicesLookupTable
 		}
-
-		/*Not in use for the moment but might come in handy. I dont see where
-      getSelected(diceId) {
-      return this.diceObjects[this.idToIndexLookupTable[diceId]].selected
-    }*/
 	}
 }
 </script>

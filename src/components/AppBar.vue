@@ -1,8 +1,7 @@
 <template>
   <v-app-bar app color="#00b1ca" dark>
-    <!-- <v-app-bar-nav-icon @click.stop="navButtonClicked()" /> -->
     <v-icon large>mdi-dice-6</v-icon>
-    <v-toolbar-title>Dicer</v-toolbar-title>
+    <v-toolbar-title>dicer</v-toolbar-title>
   </v-app-bar>
 </template>
 
