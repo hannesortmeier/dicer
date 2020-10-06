@@ -2,10 +2,7 @@
 	<v-container class='lighten-5 pt-0'>
 		<v-row dense>
 			<v-col cols="12">
-				<Dices
-					:dices="dices"
-					@set-selected="setSelected($event)"
-				/>
+				<Dices :dices="dices" @set-selected="setSelected($event)"/>
 				<LetsRollButton
 					:dices="dices"
 					:idToIndexLookupTable="idToIndexLookupTable"

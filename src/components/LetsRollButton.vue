@@ -1,13 +1,6 @@
 <template>
-	<v-row
-		align="center"
-		justify="center"
-	>
-		<v-col
-			class="d-flex justify-center"
-			cols="5"
-			sm="4"
-		>
+	<v-row align="center" justify="center">
+		<v-col class="d-flex justify-center" cols="5" sm="4">
 			<v-btn @click.native='rollSelectedDices()'>
 				Let's roll!
 			</v-btn>

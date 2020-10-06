@@ -31,6 +31,7 @@
 
 <script>
 import icons from "../assets/dicer_svg.json";
+
 export default {
 	name: "DiceIcon",
 
@@ -41,7 +42,6 @@ export default {
 
 	computed: {
 		paths() {
-			console.log(this.name);
 			return icons[this.name];
 		},
 

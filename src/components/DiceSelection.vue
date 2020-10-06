@@ -1,13 +1,6 @@
 <template>
-	<v-container
-		fluid
-		:class="{'lighten-5': true,
-						 'pb-0': $vuetify.breakpoint.xs}"
-	>
-		<div
-			align="start"
-			justify="center"
-		>
+	<v-container fluid :class="{'lighten-5': true, 'pb-0': $vuetify.breakpoint.xs}">
+		<div align="start" justify="center">
 			<v-alert
 				:value="showDiceCountAlert"
 				type="info"
@@ -29,15 +22,8 @@
 				You have to choose the number of sides of the dices you want to add!
 			</v-alert>
 		</div>
-		<v-row
-			dense
-			align="center"
-			justify="space-around"
-		>
-			<v-col
-				class="d-flex justify-center"
-				cols="4"
-			>
+		<v-row dense align="center" justify="space-around">
+			<v-col class="d-flex justify-center" cols="4">
 				<v-select
 					:items="supportedQuantityOfDices"
 					label="How many dices?"
@@ -46,10 +32,7 @@
 					v-model.number="diceQuantity"
 				></v-select>
 			</v-col>
-			<v-col
-				class="d-flex justify-center"
-				cols="4"
-			>
+			<v-col class="d-flex justify-center" cols="4">
 				<v-select
 					:items="supportedQuantityOfSides"
 					label="How many sides?"
@@ -58,10 +41,7 @@
 					v-model.number="diceSideCount"
 				></v-select>
 			</v-col>
-			<v-col
-				class="d-flex justify-center"
-				cols="1"
-			>
+			<v-col class="d-flex justify-center" cols="1">
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
@@ -78,10 +58,7 @@
 					<span>Add</span>
 				</v-tooltip>
 			</v-col>
-			<v-col
-				class="d-flex justify-center"
-				cols="1"
-			>
+			<v-col class="d-flex justify-center" cols="1">
 				<v-tooltip top>
 					<template v-slot:activator="{ on }">
 						<v-btn
@@ -108,28 +85,8 @@ export default {
 
 	data() {
 		return {
-			supportedQuantityOfDices: [
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				15,
-				16,
-			],
-			supportedQuantityOfSides: [
-				/*4,*/ 6,
-				/* 8, 10, 12, */ 20 /*, 21, 23, 48*/,
-			],
+			supportedQuantityOfDices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+			supportedQuantityOfSides: [/*4,*/ 6,/* 8, 10, 12, */ 20/*, 21, 23, 48*/],
 			diceQuantity: null,
 			diceSideCount: null,
 			showDiceCountAlert: false,
