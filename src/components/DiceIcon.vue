@@ -46,7 +46,7 @@ export default {
 		},
 
 		opacity() {
-			return this.selected ? 0.75 : 0.25;
+			return this.selected ? 0.25 : 0.75;
 		},
 	},
 };

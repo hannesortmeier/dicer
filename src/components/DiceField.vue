@@ -7,7 +7,11 @@
 					:dices="dices"
 					:idToIndexLookupTable="idToIndexLookupTable"
 					:selectedDicesLookupTable="selectedDicesLookupTable"
+					@set-last="setLastRoll()"
+					@set-next="setNextRoll()"
 					@set-top="setTop($event)"
+					@update-roll-history="updateRollHistory()"
+					@remove-next-roll-history="removeNextRollHistory()"
 				/>
 			</v-col>
 		</v-row>
@@ -33,12 +37,28 @@ export default {
 	},
 	
 	methods: {
-			setTop(event) {
-				this.$emit('set-top', event)
+		setTop(event) {
+			this.$emit('set-top', event)
 		},
 
 		setSelected(event) {
 			this.$emit('set-selected', event)
+		},
+
+		updateRollHistory() {
+      		this.$emit('update-roll-history')
+		},
+		
+		setLastRoll() {
+      		this.$emit('set-last')
+		},
+
+		setNextRoll() {
+			this.$emit('set-next')
+		},
+		
+		removeNextRollHistory() {
+			this.$emit('remove-next-roll-history')
 		}
 	}
 

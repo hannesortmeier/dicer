@@ -13,8 +13,8 @@
 					<DiceIcon :name='currentSVG' :selected="dice.selected" />
 				</v-btn>
 			</template>
-			<span v-if="dice.selected">deselect</span>
-			<span v-else>select</span>
+			<span v-if="dice.selected">select for next roll</span>
+			<span v-else>take out of next roll</span>
 		</v-tooltip>
 	</div>
 </template>
@@ -36,7 +36,7 @@ export default {
 	
 	computed: {
 		currentSVG() {
-      let sides = this.dice.sides
+      		let sides = this.dice.sides
 			let top = this.dice.top
 			let svg = 'd' + sides + 't' + top + 'black'
 			return this.iconName = svg

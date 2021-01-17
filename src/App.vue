@@ -1,7 +1,7 @@
 <template>
 	<v-app id="inspire" :style="{background: $vuetify.theme.themes.light.background}">
 		<AppBar @nav-button-clicked="setDrawer()" />
-		<v-content class="ma-5">
+		<v-main class="ma-5">
 			<v-card
 				class="mx-auto ma-5"
 				max-width="780"
@@ -13,6 +13,10 @@
 					@add-dices="addDiceObjects($event[0], $event[1])"
 					@remove-all="removeAllDiceObjects()"
 				/>
+				<SelectedSumDisplay 
+					:dices="diceObjects"
+					:selectedDicesLookupTable="selectedDicesLookupTable"
+				/>
 				<DiceField
 					v-if="this.diceObjects.length > 0"
 					:dices="diceObjects"
@@ -21,9 +25,13 @@
 					@set-top="setTop($event[0], $event[1])"
 					@set-selected="setSelected($event)"
 					@remove-dice="removeSingleDiceObject($event)"
+					@update-roll-history="updateRollHistory()"
+					@set-last="setLastRoll()"
+					@set-next="setNextRoll()"
+					@remove-next-roll-history="removeNextRollHistory()"
 				/>
 			</v-card>
-		</v-content>
+		</v-main>
 		<Footer />
 	</v-app>
 </template>
@@ -33,17 +41,19 @@ import AppBar from './components/AppBar'
 import Footer from './components/Footer'
 import DiceSelection from './components/DiceSelection'
 import DiceField from './components/DiceField'
+import SelectedSumDisplay from './components/SelectedSumDisplay'
 
 export default {
 	components: {
 		AppBar,
 		Footer,
-    DiceSelection,
-    DiceField
+    	DiceSelection,
+		DiceField,
+		SelectedSumDisplay
 	},
 
 	mounted () {
-      console.log(this.$vuetify.breakpoint)
+      //console.log(this.$vuetify.breakpoint)
     },
 
 	props: {},
@@ -51,10 +61,25 @@ export default {
 	data: () => ({
 		diceObjects: [],
 		idToIndexLookupTable: [],
-		selectedDicesLookupTable: []
+		selectedDicesLookupTable: [],
+		rollHistory: [[]],
+		historyIndex: 0
 	}),
 
 	methods: {
+		copyDiceObjects(diceObjects) {
+			let diceObjectsCopy = []
+			diceObjects.forEach(dice => {
+				diceObjectsCopy.push({
+				id: dice.id,
+				sides: dice.sides,
+				top: dice.top,
+				selected: dice.selected
+			})
+			});
+			return diceObjectsCopy
+		},
+
 		addDiceObjects(diceQuantity, diceSideCount) {
 			let nextId = this.getNextIdOfDiceObject()
 			for (let i = nextId; i < parseFloat(diceQuantity) + parseFloat(nextId); i++) {
@@ -62,8 +87,9 @@ export default {
 					id: i,
 					sides: diceSideCount,
 					top: diceSideCount,
-					selected: true
+					selected: false
 				})
+			this.initialiseRollHistory()
 			}
 			this.updateIdToIndexLookupTable()
 			this.updateSelectedLookupTable()
@@ -78,6 +104,12 @@ export default {
 				}
 			}
 			return nextId
+		},
+
+		initialiseRollHistory() {
+			this.rollHistory = []
+			this.rollHistory[0] = this.copyDiceObjects(this.diceObjects)
+			this.historyIndex = 0
 		},
 
 		setTop(diceId, newTop) {
@@ -115,12 +147,41 @@ export default {
 		updateSelectedLookupTable() {
 			let selectedDicesLookupTable = []
 			for (let i = 0; i < this.diceObjects.length; i++) {
-				if (this.diceObjects[i].selected) {
+				if (! this.diceObjects[i].selected) {
 					selectedDicesLookupTable.push(this.diceObjects[i].id)
 				}
 			}
 			this.selectedDicesLookupTable = selectedDicesLookupTable
+		},
+
+		updateRollHistory() {
+			this.rollHistory.push(this.copyDiceObjects(this.diceObjects))
+			this.historyIndex = this.historyIndex + 1
+			console.log('rollHistory', this.rollHistory)
+		},
+
+		setLastRoll() {
+			if (this.historyIndex >= 1) {
+				this.diceObjects = this.rollHistory[this.historyIndex - 1]	
+				this.historyIndex = this.historyIndex - 1
+			}
+			console.log('historyIndex: ',this.historyIndex)
+		},
+	
+		setNextRoll() {
+			if (this.rollHistory.length - 1 > this.historyIndex) {
+			this.diceObjects = this.rollHistory[this.historyIndex + 1]
+			this.historyIndex = this.historyIndex + 1
+			}
+			console.log('historyIndex: ',this.historyIndex)
+		},
+
+		removeNextRollHistory() {
+			for (let i = this.historyIndex; i < this.rollHistory.length; i++) {
+				this.rollHistory.splice(this.historyIndex + 1, 1)
+			}
+			console.log('rollHistory after slice', this.rollHistory)
 		}
-	}
+	},
 }
 </script>
