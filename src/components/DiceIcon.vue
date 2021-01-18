@@ -9,7 +9,7 @@
 		viewBox="0 0 24 24"
 	>
 		<g
-			v-if="name.substr(0,3) == 'd20'"
+			v-if="(name.substr(0,3) == 'd20') || (name.substr(0,3) == 'dHe')"
 			:transform="paths[0]['transform']"
 		>
 			<path

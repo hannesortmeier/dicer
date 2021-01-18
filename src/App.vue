@@ -74,6 +74,7 @@ export default {
 				id: dice.id,
 				sides: dice.sides,
 				top: dice.top,
+				value: dice.value,
 				selected: dice.selected
 			})
 			});
@@ -87,12 +88,21 @@ export default {
 					id: i,
 					sides: diceSideCount,
 					top: diceSideCount,
+					value: this.setDiceValue(diceSideCount),
 					selected: false
 				})
 			this.initialiseRollHistory()
 			}
 			this.updateIdToIndexLookupTable()
 			this.updateSelectedLookupTable()
+		},
+
+		setDiceValue(top) {
+			if (top == 'Heckmeck!') {
+				return 5
+			} else {
+				return top
+			}
 		},
 
 		getNextIdOfDiceObject() {
@@ -115,6 +125,7 @@ export default {
 		setTop(diceId, newTop) {
 			let arrayIndexToDiceId = this.idToIndexLookupTable[diceId]
 			this.diceObjects[arrayIndexToDiceId].top = newTop
+			this.diceObjects[arrayIndexToDiceId].value = this.setDiceValue(newTop)
 		},
 
 		setSelected(diceId) {

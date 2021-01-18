@@ -21,7 +21,7 @@ export default {
       let sum = 0
       for (const dice in this.dices) {
         if (this.dices[dice].selected) {
-          sum = sum + this.dices[dice].top;
+          sum = sum + this.dices[dice].value;
         }
       }
       return this.selectedSum = sum

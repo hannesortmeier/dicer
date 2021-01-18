@@ -86,7 +86,7 @@ export default {
 	data() {
 		return {
 			supportedQuantityOfDices: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-			supportedQuantityOfSides: [/*4,*/ 6,/* 8, 10, 12, */ 20/*, 21, 23, 48*/],
+			supportedQuantityOfSides: [/*4,*/ 6,/* 8, 10, 12, */ 20/*, 21, 23, 48*/, 'Heckmeck!'],
 			diceQuantity: null,
 			diceSideCount: null,
 			showDiceCountAlert: false,

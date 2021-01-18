@@ -54,8 +54,17 @@ export default {
 
     rollSingleDice(diceId) {
       let arrayIndexToDiceId = this.idToIndexLookupTable[diceId]
-      let sideCount = parseFloat(this.dices[arrayIndexToDiceId].sides)
-      let newTop = Math.floor((Math.random() * sideCount) + 1)
+      let newTop
+      if (this.dices[arrayIndexToDiceId].sides == 'Heckmeck!') {
+        let sideCount = 6.0
+        newTop = Math.floor((Math.random() * sideCount) + 1)
+        if (newTop == 6) {
+          newTop = 'Heckmeck!'
+        }
+      } else {
+        let sideCount = parseFloat(this.dices[arrayIndexToDiceId].sides)
+        newTop = Math.floor((Math.random() * sideCount) + 1)
+      }
       let args = [diceId, newTop]
       this.$emit('set-top', args)
     },
