@@ -1,15 +1,33 @@
 <template>
 	<v-row align="center" justify="center">
-		<v-col class="d-flex justify-center" cols="5" sm="4">
-      <v-btn @click.native='setLastRoll()'>
-        back
+		<v-col class="d-flex justify-center" cols="1" sm="4">
+      <v-btn
+        medium
+        @click.native='setLastRoll()'
+        class="ma-2"
+        color="orange darken-2"
+        dark>
+          <v-icon dark large>
+            mdi-arrow-left
+          </v-icon>
       </v-btn>
-			<v-btn @click.native='rollSelectedDices()'>
-				Let's roll!
+			<v-btn 
+        @click.native='rollSelectedDices()'
+        class="ma-2"
+        color="orange darken-2"
+        dark>
+				  Let's roll!
 			</v-btn>
-      <v-btn @click.native='setNextRoll()'>
-        forward
-      </v-btn>
+      <v-btn
+        medium
+        @click.native='setNextRoll()'
+        class="ma-2"
+        color="orange darken-2"
+        dark>
+          <v-icon dark large>
+            mdi-arrow-right
+          </v-icon>
+				</v-btn>
 		</v-col>
 	</v-row>
 </template>
@@ -27,11 +45,11 @@ export default {
 
   methods: {
     rollSelectedDices() {
+      this.$emit('remove-next-roll-history')
       this.selectedDicesLookupTable.forEach(diceId => {
         this.rollSingleDice(diceId)
       });
       this.updateRollHistory()
-      this.$emit('remove-next-roll-history')
     },
 
     rollSingleDice(diceId) {

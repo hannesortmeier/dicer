@@ -157,15 +157,16 @@ export default {
 		updateRollHistory() {
 			this.rollHistory.push(this.copyDiceObjects(this.diceObjects))
 			this.historyIndex = this.historyIndex + 1
-			console.log('rollHistory', this.rollHistory)
+			//console.log('After Update')
+			//this.logValues(this.rollHistory)
 		},
 
 		setLastRoll() {
 			if (this.historyIndex >= 1) {
-				this.diceObjects = this.rollHistory[this.historyIndex - 1]	
+				this.diceObjects = this.copyDiceObjects(this.rollHistory[this.historyIndex - 1])
 				this.historyIndex = this.historyIndex - 1
 			}
-			console.log('historyIndex: ',this.historyIndex)
+			//console.log('historyIndex: ',this.historyIndex)
 		},
 	
 		setNextRoll() {
@@ -173,14 +174,27 @@ export default {
 			this.diceObjects = this.rollHistory[this.historyIndex + 1]
 			this.historyIndex = this.historyIndex + 1
 			}
-			console.log('historyIndex: ',this.historyIndex)
+			//console.log('historyIndex: ',this.historyIndex)
 		},
 
 		removeNextRollHistory() {
-			for (let i = this.historyIndex; i < this.rollHistory.length; i++) {
-				this.rollHistory.splice(this.historyIndex + 1, 1)
+			for (let i = this.rollHistory.length - 1; i > this.historyIndex; i--) {
+				this.rollHistory.splice(i, 1)
 			}
-			console.log('rollHistory after slice', this.rollHistory)
+			//console.log('After Slicing')
+			//this.logValues(this.rollHistory)
+		},
+
+		logValues(rollHistory) {
+			let i = 0
+			for (const roll in rollHistory) {
+				console.log('History Roll Index: ', roll)
+				rollHistory[roll].forEach(dice => {
+					console.log(i, 'Dice Value: ', dice.top)
+					i = i + 1
+				});
+			}
+
 		}
 	},
 }
