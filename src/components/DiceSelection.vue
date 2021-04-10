@@ -9,7 +9,7 @@
 				dense
 				outlined
 			>
-				You have to choose the number of dices you want to add!
+				You have to choose the number of dice you want to add!
 			</v-alert>
 			<v-alert
 				:value="showDiceSideAlert"
@@ -19,7 +19,7 @@
 				dense
 				outlined
 			>
-				You have to choose the number of sides of the dices you want to add!
+				You have to choose the number of sides of the dice you want to add!
 			</v-alert>
 		</div>
 		<v-row dense align="center" justify="space-around">
