@@ -2,7 +2,7 @@
   <v-container class='lighten-5 pt-0'>
       <v-row align="center" justify="center">
 			<v-col class="d-flex justify-center" cols="5" sm="4">
-          <span>Sum of selected dices: {{sumOfSelectedDice}}</span>
+          <span>Sum of selected dice: {{sumOfSelectedDice}}</span>
 			</v-col>
 		</v-row>
   </v-container>

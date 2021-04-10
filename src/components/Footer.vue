@@ -1,6 +1,6 @@
 <template>
   <v-footer color="#00b1caff" app>
-    <span class="white--text">Contact @ hannes [dot] ortmeier [at] gmail [dot] com</span>
+    <span class="white--text">Contact @ hannes [at] ortmeier [dot] me</span>
   </v-footer>
 </template>
 
