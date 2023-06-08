@@ -1,11 +1,9 @@
 # dicer
+## Simple Dice Simulation with Vue.js
+dicer is a web application that simulates dice rolls using Vue.js. It offers three modes for dice simulation: six-sided dice, 20-sided dice, and Heckmeck dice. Heckmeck dice are essentially six-sided dice, but the number six is replaced with a worm symbol that has a value of 5 points. The web app conveniently calculates the sum of the selected dice values, eliminating the need for manual calculations. Additionally, selected dice will retain their values on the next roll. You can add an unlimited number of dice to the dice board, limited only by your browser's capacity. The arrow buttons allow you to navigate through your throw history. Feel free to create SVGs for other types of dice such as d4, d8, d12, and more.
 
-## Simple dice simulation done with vuejs. 
 
-You can choose between three modes - six sided dice, 20 sided dice and Heckmeck-dice which are literally 6 sided dice but the six is replaced with a worm that has a value of 5 points. The webapp will sum up the selected values for you so you don't have to do that and selected dice will also not change their values on the next roll. You can add an unlimited amount of dices to the dice board (it is actually limited by the number of dice your browser can handle). With the arrow buttons you can go back and forth your throw history.
-Feel free to create svgs for other type of dice (d4, d8, d12, ...).
-
-You can check it out at [dicer.pro](http://dicer.pro).
+You can check out dicer at dicer.pro.
 
 ## Project setup
 ```
@@ -22,6 +20,5 @@ npm run serve
 npm run build
 ```
 
-### Why?
-
-Once the corona virus lockdown hit Germany in March 2020 me and my friends had to resort to online board game nights. In particular we were fond of a game called 'Heckmeck am Bratwurmeck' (this loosely translates to 'fuss at the fried-worm-corner') where your chances of winning the game increase if you are good at calculating the stochastic expectations of future throws (yes, we were all mathematicians or computer scientists). Every turn you throw 8 dice and take the dice that "match" with your tactics out of the next throw. Not everyone has 8 dice lying around and after a good bit of searching the web I couldn't find any dice-website or app that met my requirements. Thus I had to build the dice app for 'Heckmeck' myself and born was dicer.pro.
+## Why?
+When the COVID-19 lockdown hit Germany in March 2020, my friends and I had to resort to online board game nights. We particularly enjoyed playing a game called 'Heckmeck am Bratwurmeck' (loosely translated as 'Fuss at the Fried-Worm Corner'), where calculating the stochastic expectations of future dice rolls increased your chances of winning. As mathematicians and computer scientists, we wanted a way to simulate dice rolls conveniently. After searching the web, I couldn't find any dice websites or apps that met our requirements. That's when I decided to build the dicer app specifically for 'Heckmeck.' And thus, dicer.pro was born.
