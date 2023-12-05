@@ -11,14 +11,14 @@
     "vuetify": "^2.3.12"
   },
   "devDependencies": {
-    "@vue/cli-service": "~5.0.8",
-    "eslint": "^6.8.0",
+    "@vue/cli-service": "*",
+    "eslint": "*",
     "prettier": "2.0.5",
-    "sass": "^1.26.11",
-    "sass-loader": "^8.0.0",
-    "vue-cli-plugin-vuetify": "^2.0.7",
-    "vue-template-compiler": "^2.6.12",
-    "vuetify-loader": "^1.6.0"
+    "sass": "*",
+    "sass-loader": "*",
+    "vue-cli-plugin-vuetify": "*",
+    "vue-template-compiler": "*",
+    "vuetify-loader": "*"
   },
   "browserslist": [
     "> 1%",
