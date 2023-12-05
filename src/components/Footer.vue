@@ -1,6 +1,6 @@
 <template>
   <v-footer color="#00b1caff" app>
-    <span class="white--text">Contact @ hannes [at] ortmeier [dot] me</span>
+    <span class="white--text">Contact @ https://github.com/hannesortmeier/dicer</span>
   </v-footer>
 </template>
 
